@@ -1,4 +1,3 @@
-import DOMPurify from 'dompurify';
 import React from 'react'
 import { Image } from 'semantic-ui-react';
 import BlogLayout from '../../layouts/BlogLayout';
@@ -13,9 +12,7 @@ const PagePost = (props) => {
   const { data: page } = pageContext; //Se extrae data y se le asigna un alias, que es la que contiene todos los campos a mostrar
   
   //Función para purificar el objeto que llega desde el context que crea las páginas, esto se hace para que el objeto que llega no sea tan fácil y peligroso de hackear
-  const sanitizedPage=()=>({
-    __html: DOMPurify.sanitize(page.description.description)
-  })
+
 
   return (
     <BlogLayout className="container__page">
@@ -23,7 +20,7 @@ const PagePost = (props) => {
       <h2 className='container__page-title'>{page.title}</h2>
       <Image src={page.img.publicUrl} alt={page.title} className="container__page-img" />
       <section className='container__page-body'>
-        <div dangerouslySetInnerHTML={sanitizedPage()} />
+        <div dangerouslySetInnerHTML={{__html:page.description.description}} />
       </section>
 
     </BlogLayout>

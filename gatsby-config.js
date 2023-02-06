@@ -8,6 +8,7 @@
  * @type {import('gatsby').GatsbyConfig}
  */
 module.exports = {
+  pathPrefix: '/blog',
   siteMetadata: {
     title: `Programación`,
     description: `Este es un blog sobre programación, el cual te recomendará algunos post que pueden ayudarte a fortalecer tus conocimientos`,
